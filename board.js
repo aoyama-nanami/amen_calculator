@@ -1,6 +1,6 @@
 import * as Data from './raw_data/data.js';
 
-const image_map = {
+const IMAGE_MAP = {
   'f': 'images/fire.png',
   'w': 'images/wood.png',
   'a': 'images/water.png',
@@ -14,7 +14,7 @@ function _Render(element, board_layout) {
 
   for (let i = 0; i < 30; i++) {
     const img = $('<img></img>');
-    img.attr('src', image_map[board_layout[i]]);
+    img.attr('src', IMAGE_MAP[board_layout[i]]);
     element.append(img);
     if (i % 6 == 5) {
       element.append($('<br/>'));
@@ -36,50 +36,14 @@ function _LoadBoard() {
   const c0 = $('input[name=c0]:checked').val();
   const c1 = $('input[name=c1]:checked').val();
   const c2 = $('input[name=c2]:checked').val();
-  const key = $('#dataset').val();
-  const n0 = $('#n0').val();
-  const n1 = $('#n1').val();
 
-  let layout = Data[key][n0][n1];
+  let layout = Object.values($('#n2').data('map'))[0];
   layout = layout.replace(/0/g, c0).replace(/1/g, c1).replace(/5/g, c2);
   if ($('#flip').prop('checked')) {
     layout = _Flip(layout);
   }
 
   _Render($('#board'), layout);
-}
-
-function _LoadCount0List() {
-  const container = $('#n0');
-  container.empty();
-  const key = $('#dataset').val();
-  for (let i in Data[key]) {
-    const option = $('<option></option>').attr('value', i).text(i);
-    container.append(option);
-  }
-  _LoadCount1List();
-}
-
-function _LoadCount1List() {
-  const container = $('#n1');
-  container.empty();
-  const key = $('#dataset').val();
-  const n0 = $('#n0').val();
-  for (let i in Data[key][n0]) {
-    const option = $('<option></option>').attr('value', i).text(i);
-    container.append(option);
-  }
-  _LoadCount2List();
-}
-
-function _LoadCount2List() {
-  const container = $('#n2');
-  container.empty();
-  const n0 = $('#n0').val();
-  const n1 = $('#n1').val();
-  const n2 = 30 - n0 - n1;
-  const option = $('<option></option>').attr('value', n2).text(n2);
-  container.append(option);
 }
 
 function _UpdateQueryString() {
@@ -100,7 +64,7 @@ function _TryRestoreQueryString() {
         $('#flip').prop('checked', true);
       } else {
         $('#' + name).val(value);
-        $('#' + name).change();
+        $('#' + name).triggerHandler('change');
       }
     } else {
       return;
@@ -108,13 +72,29 @@ function _TryRestoreQueryString() {
   }
 }
 
+function _OnSelectionChange(e) {
+  const target = $(e.target);
+  const next = target.data('next-element');
+  const map = target.data('map');
+  const key = target.val();
+  next.empty();
+  for (let i in map[key]) {
+    const option = $('<option></option>').attr('value', i).text(i);
+    next.append(option);
+  }
+  next.data('map', map[key]);
+  next.triggerHandler('change');
+}
+
 function Init() {
-  $('#dataset').change(_LoadCount0List);
-  $('#n0').change(_LoadCount1List);
-  $('#n1').change(_LoadCount2List);
-  $('#dataset').change();
+  $('#dataset').data('next-element', $('#n0'));
+  $('#dataset').data('map', Data);
+  $('#n0').data('next-element', $('#n1'));
+  $('#n1').data('next-element', $('#n2'));
+  $('#dataset, #n0, #n1').change(_OnSelectionChange);
   $('#board-options-form').change(_UpdateQueryString);
   $('#board-options-form').change(_LoadBoard);
+  $('#dataset').triggerHandler('change');
   _TryRestoreQueryString();
   _LoadBoard();
 }

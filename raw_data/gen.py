@@ -20,7 +20,7 @@ with open('data.js', 'w') as output:
             g = m.groups()
             print >> output, '{0}[{1}] = {0}[{1}] || {{}};'.format(
                 var_name, *m.groups())
-            print >> output, '{0}[{1}][{2}] = \'{4}\';'.format(
+            print >> output, '{0}[{1}][{2}] = {{{3}: \'{4}\'}};'.format(
                 var_name, *m.groups())
         print >> output, ''
 
