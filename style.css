@@ -6,6 +6,7 @@
 #board img {
   width: 75px;
   height: auto;
+  line-height: 0;
 }
 
 #board img:nth-child(odd) {
