@@ -23,8 +23,7 @@
   border-collapse: collapse;
 }
 
-#board-options-table tr:nth-child(even),
-#board-options-table tr:nth-child(1),
+#board-options-table tr:nth-child(odd),
 #board-options-table tr:nth-last-child(1) {
   border-bottom: 1px solid grey;
 }
