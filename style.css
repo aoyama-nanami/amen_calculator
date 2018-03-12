@@ -17,12 +17,12 @@
   background-color: #553322;
 }
 
-#board-options img {
+#board-options-table img {
   width: 20px;
   height: auto;
 }
 
-#board-options label {
+#board-options-table label {
   padding-right: 10px
 }
 
