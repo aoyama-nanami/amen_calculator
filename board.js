@@ -39,7 +39,7 @@ function _LoadBoard() {
 
   let layout = Square.DATA[n0][n1][n2];
   layout = layout.replace(/0/g, c0).replace(/1/g, c1).replace(/5/g, c2);
-  if ($('.flip').prop('checked')) {
+  if ($('#flip').prop('checked')) {
     layout = _Flip(layout);
   }
 
