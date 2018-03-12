@@ -16,6 +16,9 @@ function _Render(element, board_layout) {
     const img = $('<img></img>');
     img.attr('src', image_map[board_layout[i]]);
     element.append(img);
+    if (i % 6 == 5) {
+      element.append($('<br/>'));
+    }
   }
 }
 

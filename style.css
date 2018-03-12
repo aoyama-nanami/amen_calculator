@@ -1,6 +1,4 @@
 #board {
-  background-image: url("images/bg.jpg");
-  background-size: contain;
   width: 455px;
   height: 379px;
 }
@@ -8,6 +6,14 @@
 #board img {
   width: 75px;
   height: auto;
+}
+
+#board img:nth-child(odd) {
+  background-color: #332222;
+}
+
+#board img:nth-child(even) {
+  background-color: #553322;
 }
 
 #board-options img {
