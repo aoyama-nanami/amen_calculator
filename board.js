@@ -37,10 +37,10 @@ function _LoadBoard() {
   const c1 = $('input[name=c1]:checked').val();
   const c2 = $('input[name=c2]:checked').val();
   const key = $('#dataset').val();
-  const n1 = $('#count1').val();
-  const n2 = $('#count2').val();
+  const n0 = $('#n0').val();
+  const n1 = $('#n1').val();
 
-  let layout = Data[key][n1][n2];
+  let layout = Data[key][n0][n1];
   layout = layout.replace(/0/g, c0).replace(/1/g, c1).replace(/5/g, c2);
   if ($('#flip').prop('checked')) {
     layout = _Flip(layout);
@@ -49,47 +49,74 @@ function _LoadBoard() {
   _Render($('#board'), layout);
 }
 
-function _LoadCount1List() {
-  const container = $('#count1');
+function _LoadCount0List() {
+  const container = $('#n0');
   container.empty();
   const key = $('#dataset').val();
   for (let i in Data[key]) {
     const option = $('<option></option>').attr('value', i).text(i);
     container.append(option);
   }
-  container.change(_LoadCount2List);
-  container.change();
+  _LoadCount1List();
 }
 
-function _LoadCount2List() {
-  const container = $('#count2');
+function _LoadCount1List() {
+  const container = $('#n1');
   container.empty();
   const key = $('#dataset').val();
-  const n1 = $('#count1').val();
-  for (let i in Data[key][n1]) {
+  const n0 = $('#n0').val();
+  for (let i in Data[key][n0]) {
     const option = $('<option></option>').attr('value', i).text(i);
     container.append(option);
   }
-  container.change(_LoadCount3List);
-  container.change();
+  _LoadCount2List();
 }
 
-function _LoadCount3List() {
-  const container = $('#count3');
+function _LoadCount2List() {
+  const container = $('#n2');
   container.empty();
-  const n1 = $('#count1').val();
-  const n2 = $('#count2').val();
-  const n3 = 30 - n1 - n2;
-  const option = $('<option></option>').attr('value', n3).text(n3);
+  const n0 = $('#n0').val();
+  const n1 = $('#n1').val();
+  const n2 = 30 - n0 - n1;
+  const option = $('<option></option>').attr('value', n2).text(n2);
   container.append(option);
-  _LoadBoard();
+}
+
+function _UpdateQueryString() {
+  const form = $('#board-options-form');
+  window.history.pushState({}, '', '?' + form.serialize());
+}
+
+function _TryRestoreQueryString() {
+  const search = window.location.search.slice(1);
+  const params = new URLSearchParams(search);
+
+  for (let name of ['dataset', 'n0', 'n1', 'n2', 'c0', 'c1', 'c2', 'flip']) {
+    const value = params.get(name);
+    if (value) {
+      if (name[0] == 'c') {
+        $('input[name=' + name + '][value=' + value + ']').prop('checked', true);
+      } else if (name == 'flip') {
+        $('#flip').prop('checked', true);
+      } else {
+        $('#' + name).val(value);
+        $('#' + name).change();
+      }
+    } else {
+      return;
+    }
+  }
 }
 
 function Init() {
-  $('#board-options input[type=radio]').change(_LoadBoard);
-  $('#flip').change(_LoadBoard);
-  $('#dataset').change(_LoadCount1List);
+  $('#dataset').change(_LoadCount0List);
+  $('#n0').change(_LoadCount1List);
+  $('#n1').change(_LoadCount2List);
   $('#dataset').change();
+  $('#board-options-form').change(_UpdateQueryString);
+  $('#board-options-form').change(_LoadBoard);
+  _TryRestoreQueryString();
+  _LoadBoard();
 }
 
 $(Init)

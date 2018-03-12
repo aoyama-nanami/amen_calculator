@@ -8,80 +8,82 @@
     <script type="module" src="board.js"></script>
   </head>
   <body>
-    <table id="board-options-table">
-      <tr>
-        <td>Dataset</td>
-        <td>
-          <select id="dataset">
-            <optgroup label="貫通">
-              <option value="SQUARE_5">貫通 - 5c</option>
-              <option value="SQUARE_6">貫通 - 6c</option>
-              <option value="SQUARE_7" selected>貫通 - 7c</option>
-            </optgroup>
-            <optgroup label="貫通追打">
-              <option value="SQUARE_EXTRA_ATTACK_5">貫通追打 - 5c</option>
-              <option value="SQUARE_EXTRA_ATTACK_6">貫通追打 - 6c</option>
-            </optgroup>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td rowspan="2">Color1</td>
-        <td>
-          <label><input type="radio" name="c0" value="f"><img src="images/fire.png" alt="fire"></label>
-          <label><input type="radio" name="c0" value="w"><img src="images/wood.png" alt="wood"></label>
-          <label><input type="radio" name="c0" value="a"><img src="images/water.png" alt="water"></label>
-          <label><input type="radio" name="c0" value="l"><img src="images/light.png" alt="light"></label>
-          <label><input type="radio" name="c0" value="d" checked><img src="images/dark.png" alt="dark"></label>
-          <label><input type="radio" name="c0" value="h"><img src="images/heart.png" alt="heart"></label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <select id="count1"></select>
-        </td>
-      </tr>
-      <tr>
-        <td rowspan="2">Color2</td>
-        <td>
-          <label><input type="radio" name="c1" value="f"><img src="images/fire.png" alt="fire"></label>
-          <label><input type="radio" name="c1" value="w"><img src="images/wood.png" alt="wood"></label>
-          <label><input type="radio" name="c1" value="a"><img src="images/water.png" alt="water"></label>
-          <label><input type="radio" name="c1" value="l" checked><img src="images/light.png" alt="light"></label>
-          <label><input type="radio" name="c1" value="d"><img src="images/dark.png" alt="dark"></label>
-          <label><input type="radio" name="c1" value="h"><img src="images/heart.png" alt="heart"></label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <select id="count2"></select>
-        </td>
-      </tr>
-      <tr>
-        <td rowspan="2">Color3</td>
-        <td>
-          <label><input type="radio" name="c2" value="f"><img src="images/fire.png" alt="fire"></label>
-          <label><input type="radio" name="c2" value="w"><img src="images/wood.png" alt="wood"></label>
-          <label><input type="radio" name="c2" value="a"><img src="images/water.png" alt="water"></label>
-          <label><input type="radio" name="c2" value="l"><img src="images/light.png" alt="light"></label>
-          <label><input type="radio" name="c2" value="d"><img src="images/dark.png" alt="dark"></label>
-          <label><input type="radio" name="c2" value="h" checked><img src="images/heart.png" alt="heart"></label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <select id="count3"></select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="flip">flip</label>
-        </td>
-        <td>
-          <input type="checkbox" id="flip">
-        </td>
-      </tr>
-    </table>
+    <form id="board-options-form">
+      <table id="board-options-table">
+        <tr>
+          <td>Dataset</td>
+          <td>
+            <select id="dataset" name="dataset">
+              <optgroup label="貫通">
+                <option value="SQUARE_5">貫通 - 5c</option>
+                <option value="SQUARE_6">貫通 - 6c</option>
+                <option value="SQUARE_7" selected>貫通 - 7c</option>
+              </optgroup>
+              <optgroup label="貫通追打">
+                <option value="SQUARE_EXTRA_ATTACK_5">貫通追打 - 5c</option>
+                <option value="SQUARE_EXTRA_ATTACK_6">貫通追打 - 6c</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2">Color1</td>
+          <td>
+            <label><input type="radio" name="c0" value="f"><img src="images/fire.png" alt="fire"></label>
+            <label><input type="radio" name="c0" value="w"><img src="images/wood.png" alt="wood"></label>
+            <label><input type="radio" name="c0" value="a"><img src="images/water.png" alt="water"></label>
+            <label><input type="radio" name="c0" value="l"><img src="images/light.png" alt="light"></label>
+            <label><input type="radio" name="c0" value="d" checked><img src="images/dark.png" alt="dark"></label>
+            <label><input type="radio" name="c0" value="h"><img src="images/heart.png" alt="heart"></label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="n0" name="n0"></select>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2">Color2</td>
+          <td>
+            <label><input type="radio" name="c1" value="f"><img src="images/fire.png" alt="fire"></label>
+            <label><input type="radio" name="c1" value="w"><img src="images/wood.png" alt="wood"></label>
+            <label><input type="radio" name="c1" value="a"><img src="images/water.png" alt="water"></label>
+            <label><input type="radio" name="c1" value="l" checked><img src="images/light.png" alt="light"></label>
+            <label><input type="radio" name="c1" value="d"><img src="images/dark.png" alt="dark"></label>
+            <label><input type="radio" name="c1" value="h"><img src="images/heart.png" alt="heart"></label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="n1" name="n1"></select>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2">Color3</td>
+          <td>
+            <label><input type="radio" name="c2" value="f"><img src="images/fire.png" alt="fire"></label>
+            <label><input type="radio" name="c2" value="w"><img src="images/wood.png" alt="wood"></label>
+            <label><input type="radio" name="c2" value="a"><img src="images/water.png" alt="water"></label>
+            <label><input type="radio" name="c2" value="l"><img src="images/light.png" alt="light"></label>
+            <label><input type="radio" name="c2" value="d"><img src="images/dark.png" alt="dark"></label>
+            <label><input type="radio" name="c2" value="h" checked><img src="images/heart.png" alt="heart"></label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="n2" name="n2"></select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="flip">flip</label>
+          </td>
+          <td>
+            <input type="checkbox" id="flip" name="flip">
+          </td>
+        </tr>
+      </table>
+    </form>
     <br>
     <div id="board"></div>
   </body>
