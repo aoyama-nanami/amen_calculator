@@ -1,12 +1,12 @@
 #board {
   width: 455px;
   height: 379px;
+  line-height: 0;
 }
 
 #board img {
   width: 75px;
   height: auto;
-  line-height: 0;
 }
 
 #board img:nth-child(odd) {
