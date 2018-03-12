@@ -1,0 +1,30 @@
+#board {
+  background-image: url("images/bg.jpg");
+  background-size: contain;
+  width: 455px;
+  height: 379px;
+}
+
+#board img {
+  width: 75px;
+  height: auto;
+}
+
+#board-options img {
+  width: 15px;
+  height: auto;
+}
+
+#board-options label {
+  padding-right: 10px
+}
+
+#board-options-table {
+  border-collapse: collapse;
+}
+
+#board-options-table tr:nth-child(even),
+#board-options-table tr:nth-child(1),
+#board-options-table tr:nth-last-child(1) {
+  border-bottom: 1px solid grey;
+}

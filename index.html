@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="module" src="board.js"></script>
+  </head>
+  <body>
+    <form id="board-options">
+      <table id="board-options-table">
+        <tr>
+          <td> Dataset </td>
+          <td> <select id="dataset"></select> </td>
+        </tr>
+        <tr>
+          <td> Combo </td>
+          <td>
+            <select id="combo"></select>
+          </td>
+        <tr>
+          <td rowspan="2"> Color1 </td>
+          <td>
+            <label> <input type="radio" name="c0" value="f"> <img src='images/fire.png'></img> </label>
+            <label> <input type="radio" name="c0" value="w"> <img src='images/wood.png'></img> </label>
+            <label> <input type="radio" name="c0" value="a"> <img src='images/water.png'></img> </label>
+            <label> <input type="radio" name="c0" value="l"> <img src='images/light.png'></img> </label>
+            <label> <input type="radio" name="c0" value="d" checked> <img src='images/dark.png'></img> </label>
+            <label> <input type="radio" name="c0" value="h"> <img src='images/heart.png'></img> </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="count1"></select>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2"> Color2 </td>
+          <td>
+            <label> <input type="radio" name="c1" value="f"> <img src='images/fire.png'></img> </label>
+            <label> <input type="radio" name="c1" value="w"> <img src='images/wood.png'></img> </label>
+            <label> <input type="radio" name="c1" value="a"> <img src='images/water.png'></img> </label>
+            <label> <input type="radio" name="c1" value="l" checked> <img src='images/light.png'></img> </label>
+            <label> <input type="radio" name="c1" value="d"> <img src='images/dark.png'></img> </label>
+            <label> <input type="radio" name="c1" value="h"> <img src='images/heart.png'></img> </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="count2"></select>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2"> Color3 </td>
+          <td>
+            <label> <input type="radio" name="c2" value="f"> <img src='images/fire.png'></img> </label>
+            <label> <input type="radio" name="c2" value="w"> <img src='images/wood.png'></img> </label>
+            <label> <input type="radio" name="c2" value="a"> <img src='images/water.png'></img> </label>
+            <label> <input type="radio" name="c2" value="l"> <img src='images/light.png'></img> </label>
+            <label> <input type="radio" name="c2" value="d"> <img src='images/dark.png'></img> </label>
+            <label> <input type="radio" name="c2" value="h" checked> <img src='images/heart.png'></img> </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="count3"></select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="flip"> flip </label>
+          </td>
+          <td>
+            <input type="checkbox" id="flip">
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div id="board"></div>
+  </body>
+</html>
